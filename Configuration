@@ -1,0 +1,7 @@
+clientId="458ba66fd29fdb031c97"
+clientSecret="3687f9301af2b7f0659800bc560a262c409eff7f"
+redirectUrl="http://www.google.com"
+
+host="https://api.github.com"
+loginAPI="/authorizations"
+gistsAPI="/gists"

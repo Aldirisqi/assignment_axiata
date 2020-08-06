@@ -1,0 +1,33 @@
+function login(params) {
+    string encodedAuth = encodeBase64(params.username + ":" + params.password)
+    LoginRequest loginRequest = new LoginRequest();
+    loginRequest.scopes = "gist"
+    loginRequest.note = "note"
+    loginRequest.note_url = redirectUrl
+    loginRequest.client_id = clientId
+    loginRequest.client_secret = clientSecret
+    loginRequest.fingerprint = guid().toString()
+
+    HttpRequest request = new HttpRequest()
+    request.setHeader("Authorization", "Basic " + encodedAuth)
+    request.setBody(loginRequest.toJSONString())
+    request.url(host + loginAPI)
+    request.method(POST)
+
+    HttpResponse response = request.call().getResponse();
+    
+    return response;
+}
+
+function logout(session, id, params) {
+    string encodedAuth = encodeBase64(params.username + ":" + params.password)
+
+    HttpRequest request = new HttpRequest()
+    request.setHeader("Authorization", "Basic " + encodeBase64)
+    request.url(host + loginAPI + "/" + id)
+    request.method(DELETE)
+
+    HttpResponse response = request.call().getResponse();
+    
+    return response;
+}

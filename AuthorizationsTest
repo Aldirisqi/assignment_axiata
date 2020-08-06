@@ -1,0 +1,42 @@
+AuthorizationsServices authorizationsServices = new AuthorizationsServices();
+
+describe('login', () => {
+  it('login with correct information', async () => {
+    Params params = new Params()
+    params.username = "correct_username"
+    params.password = "correct_password"
+    
+    HttpResponse response = authorizationsServices.login(params)
+
+    expect(response.status).to.equal(200);
+
+    JsonObject result = response.body().toJSON();
+    Session session = new Session();
+    session.id = result.id
+    session.token = result.token
+
+    expect(result.token).notNull();
+  });
+});
+
+describe('login', () => {
+  it('login with wrong information', async () => {
+    Params params = new Params()
+    params.username = "wrong_username"
+    params.password = "wrong_password"
+    
+    HttpResponse response = authorizationsServices.login(params)
+
+    expect(response.status).to.equal(200);
+
+    JsonObject result = response.body().toJSON();
+
+    expect(result.token).isNull();
+  });
+});
+
+
+describe('logout', () => {
+  it('logout with wrong information', async () => {
+  });
+});

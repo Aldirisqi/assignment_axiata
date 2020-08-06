@@ -1,0 +1,63 @@
+function getListOfGists(session, params) {
+    ListOfGistsRequest listOfGistsRequest = new ListOfGistsRequest()
+    listOfGistsRequest.since = params.since
+
+    HttpRequest request = new HttpRequest()
+    request.setHeader("Authorization", "token " + session.token)
+    request.setBody(listOfGistsRequest.toJSONString())
+    request.url(host + gistsAPI)
+    request.method(GET)
+
+    HttpResponse response = request.call().getResponse();
+    
+    return response;
+}
+
+function createGist(session, params) {
+    CreateGistRequest createGistRequest = new CreateGistRequest()
+    createGistRequest.filename = params.filename
+    createGistRequest.content = params.content
+    createGistRequest.description = params.description
+    createGistRequest.public = params.public
+
+    HttpRequest request = new HttpRequest()
+    request.setHeader("Authorization", "token " + session.token)
+    request.setBody(createGistRequest.toJSONString())
+    request.url(host + gistsAPI)
+    request.method(POST)
+
+    HttpResponse response = request.call().getResponse();
+    
+    return response;
+}
+
+function updateGist(session, params) {
+    UpdateGistRequest updateGistRequest = new UpdateGistRequest()
+    updateGistRequest.filename = params.filename
+    updateGistRequest.content = params.content
+    updateGistRequest.description = params.description
+
+    HttpRequest request = new HttpRequest()
+    request.setHeader("Authorization", "token " + session.token)
+    request.setBody(updateGistRequest.toJSONString())
+    request.url(host + gistsAPI)
+    request.method(PATCH)
+
+    HttpResponse response = request.call().getResponse();
+    
+    return response;
+}
+
+function deleteGist(session, id) {
+    DeleteGistRequest deleteGistRequest = new DeleteGistRequest()
+    deleteGistRequest.id = params.id
+
+    HttpRequest request = new HttpRequest()
+    request.setHeader("Authorization", "token " + session.token)
+    request.url(host + gistsAPI + "/" + id)
+    request.method(DELETE)
+
+    HttpResponse response = request.call().getResponse();
+    
+    return response;
+}

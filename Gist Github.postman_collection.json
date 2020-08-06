@@ -1,0 +1,221 @@
+{
+	"info": {
+		"_postman_id": "6656534a-f317-435a-a2b2-b1eea87673f1",
+		"name": "Gist Github",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "f0a7fae2-77ce-46d9-98b4-7c2610ece0ee",
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.github.v3+json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic QWxkaXJpc3FpOkBzZHcxMjM0NQ=="
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"scopes\": \"gist\",\n    \"note\": \"note\",\n    \"note_url\": \"http://www.google.com\",\n    \"client_id\": \"89ce260757ce123a51da\",\n    \"client_secret\": \"11ef1e3a7740e462ee7dcf249bf52a70cb607f9e\",\n    \"fingerprint\": \"{{$guid}}\"\n}"
+				},
+				"url": {
+					"raw": "https://api.github.com/authorizations",
+					"protocol": "https",
+					"host": [
+						"api",
+						"github",
+						"com"
+					],
+					"path": [
+						"authorizations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "a0c5d3c5-a44f-4993-a7c7-819660b32e5a",
+			"name": "Get List of Gists",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token 24c1f05713164f5fc1b77885281ac71ad74cc068"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.github.v3+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"since\": \"2020-08-06T00:00:00Z\"\n}"
+				},
+				"url": {
+					"raw": "https://api.github.com/gists",
+					"protocol": "https",
+					"host": [
+						"api",
+						"github",
+						"com"
+					],
+					"path": [
+						"gists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "562a79fd-f863-44cc-9f40-181561b8e13f",
+			"name": "Create Gist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token 24c1f05713164f5fc1b77885281ac71ad74cc068"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.github.v3+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"files\": {\n        \"sample_document_test.txt\": {\n            \"content\": \"Hello world !\"\n        },\n        \"sample_document2_test.txt\": {\n            \"content\": \"Hello world again!\"\n        }\n    },\n    \"description\": \"Sample description\",\n    \"public\": true\n}"
+				},
+				"url": {
+					"raw": "https://api.github.com/gists",
+					"protocol": "https",
+					"host": [
+						"api",
+						"github",
+						"com"
+					],
+					"path": [
+						"gists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "435a02e1-e2bf-4039-aad7-7795e7220f56",
+			"name": "Edit Gist",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token 24c1f05713164f5fc1b77885281ac71ad74cc068"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.github.v3+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"files\": {\n        \"sample_document_test.txt\": {\n            \"content\": \"Hello world !\"\n        },\n        \"sample_document2_test.txt\": {\n            \"content\": \"Hello world again edit!\"\n        }\n    },\n    \"description\": \"Sample description\",\n    \"public\": true\n}"
+				},
+				"url": {
+					"raw": "https://api.github.com/gists/c36b7673aa68a7359fdb02604feebdb6",
+					"protocol": "https",
+					"host": [
+						"api",
+						"github",
+						"com"
+					],
+					"path": [
+						"gists",
+						"c36b7673aa68a7359fdb02604feebdb6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "4e0c5ad1-59c3-41db-8591-a60550afb04c",
+			"name": "Delete Gist",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.github.v3+json"
+					},
+					{
+						"key": "Authorization",
+						"value": "token 24c1f05713164f5fc1b77885281ac71ad74cc068"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.github.com/gists/c36b7673aa68a7359fdb02604feebdb6",
+					"protocol": "https",
+					"host": [
+						"api",
+						"github",
+						"com"
+					],
+					"path": [
+						"gists",
+						"c36b7673aa68a7359fdb02604feebdb6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "ab043aa5-9cfb-4d86-a7f6-8350923664a2",
+			"name": "Logout",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.github.v3+json"
+					},
+					{
+						"key": "Authorization",
+						"value": "token 4f5c4a6ebb8a85e8bf69d57ea13203f1d78265bf",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "basic QWxkaXJpc3FpOkBzZHcxMjM0NQ=="
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.github.com/authorizations/466304405",
+					"protocol": "https",
+					"host": [
+						"api",
+						"github",
+						"com"
+					],
+					"path": [
+						"authorizations",
+						"466304405"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

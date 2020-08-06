@@ -1,0 +1,36 @@
+GistsServices gistsServices = new GistsServices();
+
+
+describe('gists', () => {
+  it('get list of gist', async () => {
+    // step login
+    // step get list of gist
+    // step logout
+  });
+});
+
+describe('gists', () => {
+  it('create gist', async () => {
+    // step login
+    // step create gist
+    // check on gist.github UI
+  });
+});
+
+
+describe('gists', () => {
+  it('update gist', async () => {
+    // step login
+    // step update gist
+    // check on gist.github UI
+  });
+});
+
+
+describe('gists', () => {
+  it('delete gist', async () => {
+    // step login
+    // step delete gist
+    // check on gist.github UI
+  });
+});
